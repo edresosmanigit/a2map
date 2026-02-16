@@ -72,8 +72,16 @@
                 icon: iconUrl
             });
 
+            const index = markers.length;
+
             const info = new google.maps.InfoWindow({
-                content: `<b>${loc.name}</b><br>${loc.category}`
+                content: `
+                    <b>${loc.name}</b><br>
+                    ${loc.category}
+                    <br><button onclick="routeIndex(${index})">
+                    Directions
+                    </button>
+                `
             });
 
             marker.addListener("click", () => info.open(map, marker));
