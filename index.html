@@ -33,6 +33,8 @@
     const markers = [];
     let userMarker = null;
     let geocoder;
+    let directionsService;
+    let directionsRenderer;
 
     function showUserLocation(){
         navigator.geolocation.getCurrentPosition(pos =>{
