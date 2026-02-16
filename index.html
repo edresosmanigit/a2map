@@ -108,7 +108,7 @@
 
                     const info = new google.maps.InfoWindow({
                         content: `<b>${name}</b><br>${category}
-                        <br><button onclick="routeToIndex(${markers.length})">
+                        <br><button onclick="routeIndex(${markers.length})">
                         Directions</button>`
                     });
 
@@ -121,24 +121,24 @@
         directionsRenderer = new google.maps.DirectionsRenderer();
 
         directionsRenderer.setMap(map);
+    }
 
-        function getDirections(marker){
-            directionsService.route({
-                origin: userMarker.position,
-                destination: marker.position,
-                travelMode: google.maps.TravelMode.DRIVING
-            }, (result, status) => {
-                console.log(status);
-                console.log(result);
-                if(status === "OK"){
-                    directionsRenderer.setDirections(result);
-                }
-            });
-        }
-        
-        function routeIndex(i){
-            getDirections(markers[i].marker)
-        }
+    function getDirections(marker){
+        directionsService.route({
+            origin: userMarker.position,
+            destination: marker.position,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, (result, status) => {
+            console.log(status);
+            console.log(result);
+            if(status === "OK"){
+                directionsRenderer.setDirections(result);
+            }
+        });
+    }
+    
+    function routeIndex(i){
+        getDirections(markers[i].marker)
     }
     function filterMarkers(category){
         let count = 0;
