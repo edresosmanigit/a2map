@@ -31,6 +31,26 @@
 
     let map;
     const markers = [];
+    let userMarker = null;
+
+    function showUserLocation(){
+        navigator.geolocation.getCurrentPosition(pos =>{
+            const coordinates = {
+                lat: pos.coords.latitude,
+                lng: pos.coords.longitude
+            };
+            if(userMarker) userMarker.setMap(null);
+
+            userMarker = new google.maps.Marker({
+                position: coordinates,
+                map: map,
+                title: "You",
+                icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+            });
+
+            map.panTo(coordinates);
+        });
+    };
 
     function initMap(){
         map = new google.maps.Map(document.getElementById("map"), {
