@@ -39,10 +39,14 @@
         });
 
         locations.forEach(loc => {
+            const iconUrl = loc.category === "Chain"
+            ? "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            : "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
             const marker = new google.maps.Marker({
                 position: {lat: loc.lat, lng: loc.lng},
                 map: map,
-                title: loc.name
+                title: loc.name,
+                icon: iconUrl
             });
 
             const info = new google.maps.InfoWindow({
