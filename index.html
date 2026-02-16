@@ -82,7 +82,7 @@
         });
         setupFilterButtons();
         document.getElementById("btnLocate").onclick = showUserLocation;
-        document.getElementById("btnAdd").onclick = addLocationFromForm;
+        document.getElementById("btnAdd").onclick = addLocation;
 
         geocoder = new google.maps.Geocoder();
 
@@ -128,6 +128,8 @@
                 destination: marker.position,
                 travelMode: google.maps.travelMode.DRIVING
             }, (result, status) => {
+                console.log(status);
+                console.log(result);
                 if(status === "OK"){
                     directionsRenderer.setDirections(result);
                 }
