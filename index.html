@@ -62,7 +62,7 @@
     function filterMarkers(category){
         let count = 0;
         markers.forEach(({marker, data}) => {
-            const show = category === "all" ? true : data.category === category;
+            const show = category === "all" || data.category === category || data.rating === rating;
             marker.setVisible(show);
             if(show) count++;
         });
