@@ -118,6 +118,18 @@
         directionsRenderer = new google.maps.directionsRenderer();
 
         directionsRenderer.setMap(map);
+
+        function getDirections(marker){
+            directionsService.route({
+                origin: userMarker.position,
+                destination: marker.position,
+                travelMode: "DRIVE"
+            }, (result, status) => {
+                if(status === "OK"){
+                    directionsRenderer.setDirections(result);
+                }
+            });
+        }
     }
     function filterMarkers(category){
         let count = 0;
