@@ -82,6 +82,23 @@
         document.getElementById("btnLocate").onclick = showUserLocation;
 
         geocoder = new google.maps.Geocoder();
+
+        function addLocation(){
+            const name = placeName.value;
+            const address = placeAddress.value;
+            const category = placeCategory.value;
+
+            geocoder.geocode({address}, (results, status) => {
+                if(status === "OK"){
+                    const pos = results[0].geometry.location;
+                    const marker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+                        title: name
+                    });
+                }
+            })
+        }
     }
     function filterMarkers(category){
         let count = 0;
