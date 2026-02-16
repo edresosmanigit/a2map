@@ -36,12 +36,18 @@
         });
 
         locations.forEach(loc => {
-            new google.maps.Marker({
+            const marker = new google.maps.Marker({
                 position: {lat: loc.lat, lng: loc.lng},
                 map: map,
                 title: loc.name
-            })
-        })
+            });
+
+            const info = new google.maps.InfoWindow({
+                content: `<b>${loc.name}</b><br>${loc.category}`
+            });
+
+            marker.addListener("click", () => info.open(map, marker));
+        });
     }
 </script>
 
@@ -62,4 +68,5 @@
         </div>
     </div>
 </body>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpIxRl6dUe-1B5mCi4nf05h2j2Ztl80uA&callback=initMap" async defer></script>
 </html>
