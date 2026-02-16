@@ -126,7 +126,7 @@
             directionsService.route({
                 origin: userMarker.position,
                 destination: marker.position,
-                travelMode: google.maps.travelMode.DRIVING
+                travelMode: google.maps.TravelMode.DRIVING
             }, (result, status) => {
                 console.log(status);
                 console.log(result);
