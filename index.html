@@ -116,6 +116,8 @@
 
         directionsService = new google.maps.DirectionsService();
         directionsRenderer = new google.maps.directionsRenderer();
+
+        directionsRenderer.setMap(map);
     }
     function filterMarkers(category){
         let count = 0;
