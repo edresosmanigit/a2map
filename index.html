@@ -101,7 +101,9 @@
                     });
 
                     const info = new google.maps.InfoWindow({
-                        content: `<b>${name}</b><br>${category}`
+                        content: `<b>${name}</b><br>${category}
+                        <br><button onclick="routeToIndex(${markers.length})">
+                        Directions</button>`
                     });
 
                     marker.addListener("click", () => info.open(map, marker));
@@ -129,6 +131,10 @@
                     directionsRenderer.setDirections(result);
                 }
             });
+        }
+        
+        function routeIndex(i){
+            getDirections(markers[i].marker)
         }
     }
     function filterMarkers(category){
