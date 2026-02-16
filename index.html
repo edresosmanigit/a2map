@@ -53,6 +53,19 @@
 
             markers.push({marker: marker, data: loc});
         });
+        setupFilterButtons();
+    }
+    function filterMarkers(category){
+        markers.forEach(({marker, data}) => {
+            const show = category === "all" ? true : data.category === category;
+
+            marker.setVisible(show);
+        });
+    }
+    function setupFilterButtons(){
+        document.getElementById("btnAll").onclick = () => filterMarkers("all");
+        document.getElementById("btnFamily").onclick = () => filterMarkers("Family");
+        document.getElementById("btnChain").onclick = () => filterMarkers("Chain");
     }
 </script>
 
