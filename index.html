@@ -29,6 +29,9 @@
         {name:"Pita House Shawarma", lat:43.2452, lng:-79.8485, category:"Family"}
     ];
 
+    let map;
+    const markers = [];
+
     function initMap(){
         map = new google.maps.Map(document.getElementById("map"), {
             center: {lat: 43.2557, lng: -79.8711},
@@ -47,6 +50,8 @@
             });
 
             marker.addListener("click", () => info.open(map, marker));
+
+            markers.push({marker: marker, data: loc});
         });
     }
 </script>
@@ -56,6 +61,13 @@
         <div class="row bg-dark text-white p-3">
             <div class="col">
                 <h2>Shawarma Around Hamilton</h2>
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col">
+                <button id="btnAll" class="btn btn-primary me-2">All</button>
+                <button id="btnFamily" class="btn btn-primary me-2">Family-Owned</button> 
+                <button id="btnChain" class="btn btn-primary me-2">Chains</button> 
             </div>
         </div>
         <div class="row">
