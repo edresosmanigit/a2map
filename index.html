@@ -96,8 +96,19 @@
                         map: map,
                         title: name
                     });
+
+                    const info = new google.maps.InfoWindow({
+                        content: `<b>${name}</b><br>${category}`
+                    });
+
+                    marker.addListener("click", () => info.open(map, marker));
+
+                    markers.push({
+                        marker, 
+                        data: {name, category}
+                    });
                 }
-            })
+            });
         }
     }
     function filterMarkers(category){
