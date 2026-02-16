@@ -32,6 +32,7 @@
     let map;
     const markers = [];
     let userMarker = null;
+    let geocoder;
 
     function showUserLocation(){
         navigator.geolocation.getCurrentPosition(pos =>{
@@ -79,6 +80,8 @@
         });
         setupFilterButtons();
         document.getElementById("btnLocate").onclick = showUserLocation;
+
+        geocoder = new google.maps.Geocoder();
     }
     function filterMarkers(category){
         let count = 0;
