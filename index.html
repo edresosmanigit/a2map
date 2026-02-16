@@ -15,15 +15,15 @@
 
 <script>
     const locations = [
-        {name:"Lulu's Shawarma", lat:43.2569, lng:-79.8692, category:"Family"},
+        {name:"Lulu's Shawarma", lat:43.2569, lng:-79.8692, category:"Family", rating:"top"},
         {name:"Al Bash Shawarma", lat:43.2548, lng:-79.8857, category:"Family"},
-        {name:"Nabil's Grill", lat:43.2596, lng:-79.8673, category:"Family"},
+        {name:"Nabil's Grill", lat:43.2596, lng:-79.8673, category:"Family", rating:"top"},
         {name:"Original Shawarma", lat:43.2257, lng:-79.8826, category:"Family"},
-        {name:"Cedar Falafel & Shawarma", lat:43.1980, lng:-79.8406, category:"Family"},
+        {name:"Cedar Falafel & Shawarma", lat:43.1980, lng:-79.8406, category:"Family", rating:"top"},
         {name:"Charc Shawarma", lat:43.2284, lng:-79.8397, category:"Family"},
         {name:"Tahini's", lat:43.2577, lng:-79.9257, category:"Chain"},
-        {name:"Neighbour Shawarma", lat:43.2103, lng:-79.8349, category:"Family"},
-        {name:"Shelby's Shawarma", lat:43.2574, lng:-79.9250, category:"Chain"},
+        {name:"Neighbour Shawarma", lat:43.2103, lng:-79.8349, category:"Family", rating:"top"},
+        {name:"Shelby's Shawarma", lat:43.2574, lng:-79.9250, category:"Chain", rating:"top"},
         {name:"Shawarma Royale", lat:43.2601, lng:-79.8724, category:"Chain"},
         {name:"Your Shawarma", lat:43.2174, lng:-79.8610, category:"Chain"},
         {name:"Pita House Shawarma", lat:43.2452, lng:-79.8485, category:"Family"}
@@ -60,11 +60,14 @@
         setupFilterButtons();
     }
     function filterMarkers(category){
+        let count = 0;
         markers.forEach(({marker, data}) => {
             const show = category === "all" ? true : data.category === category;
-
             marker.setVisible(show);
+            if(show) count++;
         });
+
+        document.getElementById("resultCount").textContent = "Visible Locations: " + count;
     }
     function setupFilterButtons(){
         document.getElementById("btnAll").onclick = () => filterMarkers("all");
@@ -85,6 +88,11 @@
                 <button id="btnAll" class="btn btn-primary me-2">All</button>
                 <button id="btnFamily" class="btn btn-primary me-2">Family-Owned</button> 
                 <button id="btnChain" class="btn btn-primary me-2">Chains</button> 
+            </div>
+        </div>
+        <div class="row px-3">
+            <div class="col">
+                <span id="resultCount" class="fw-bold"></span>
             </div>
         </div>
         <div class="row">
