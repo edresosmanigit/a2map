@@ -78,6 +78,7 @@
             markers.push({marker: marker, data: loc});
         });
         setupFilterButtons();
+        document.getElementById("btnLocate").onclick = showUserLocation;
     }
     function filterMarkers(category){
         let count = 0;
