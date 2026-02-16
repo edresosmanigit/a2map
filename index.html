@@ -137,8 +137,6 @@
             destination: marker.position,
             travelMode: google.maps.TravelMode.DRIVING
         }, (result, status) => {
-            console.log(status);
-            console.log(result);
             if(status === "OK"){
                 directionsRenderer.setDirections(result);
             }
