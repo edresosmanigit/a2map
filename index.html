@@ -113,6 +113,9 @@
                 }
             });
         }
+
+        directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.directionsRenderer();
     }
     function filterMarkers(category){
         let count = 0;
