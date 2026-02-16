@@ -126,7 +126,7 @@
             directionsService.route({
                 origin: userMarker.position,
                 destination: marker.position,
-                travelMode: "DRIVE"
+                travelMode: google.maps.travelMode.DRIVING
             }, (result, status) => {
                 if(status === "OK"){
                     directionsRenderer.setDirections(result);
