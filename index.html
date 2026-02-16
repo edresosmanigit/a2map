@@ -73,6 +73,8 @@
         document.getElementById("btnAll").onclick = () => filterMarkers("all");
         document.getElementById("btnFamily").onclick = () => filterMarkers("Family");
         document.getElementById("btnChain").onclick = () => filterMarkers("Chain");
+        document.getElementById("btnTop").onclick = () => filterMarkers("top");
+        
     }
 </script>
 
@@ -86,8 +88,9 @@
         <div class="row p-2">
             <div class="col">
                 <button id="btnAll" class="btn btn-primary me-2">All</button>
+                <button id="btnTop" class="btn btn-primary me-2">Top Rated</button>
                 <button id="btnFamily" class="btn btn-primary me-2">Family-Owned</button> 
-                <button id="btnChain" class="btn btn-primary me-2">Chains</button> 
+                <button id="btnChain" class="btn btn-primary me-2">Chains</button>
             </div>
         </div>
         <div class="row px-3">
