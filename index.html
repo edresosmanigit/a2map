@@ -28,12 +28,20 @@
         {name:"Your Shawarma", lat:43.2174, lng:-79.8610, category:"shawarma"},
         {name:"Pita House Shawarma", lat:43.2452, lng:-79.8485, category:"shawarma"}
     ];
-    
+
     function initMap(){
         map = new google.maps.Map(document.getElementById("map"), {
             center: {lat: 43.2557, lng: -79.8711},
             zoom: 12
         });
+
+        locations.forEach(loc => {
+            new google.maps.Marker({
+                position: {lat: loc.lat, lng: loc.lng},
+                map: map,
+                title: loc.name
+            })
+        })
     }
 </script>
 
